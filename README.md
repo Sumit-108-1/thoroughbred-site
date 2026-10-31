@@ -15,7 +15,7 @@ Three-page responsive React/Vite website for a new thoroughbred racing syndicate
 The form is **demo-only until configured**; it does not send email by default. Create a form endpoint with a service such as Formspree, configure the receiving email address in that service, and add a `.env` file:
 
 ```
-VITE_FORM_ENDPOINT=https://formspree.io/f/YOUR_FORM_ID
+VITE_FORM_ENDPOINT=https://formspree.io/f/_FORM_ID
 ```
 
 Restart the development server and test delivery. The form includes required name, email, phone and consent fields. Configure provider-side anti-spam and privacy policies before launch. Never put email passwords in frontend code.
