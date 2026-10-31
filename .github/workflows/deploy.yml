@@ -19,29 +19,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
 
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm ci
 
+      # Step 4: Build website with Formspree integration
       - name: Build website
         run: npm run build
+        env:
+          VITE_FORMSPREE_ENDPOINT: ${{ vars.VITE_FORMSPREE_ENDPOINT }}
 
+      # Step 5: Configure GitHub Pages
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      # Step 6: Upload production website
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
+      # Step 7: Deploy website
       - name: Deploy website
         id: deployment
         uses: actions/deploy-pages@v4
